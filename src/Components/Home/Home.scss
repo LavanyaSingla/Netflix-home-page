@@ -1,0 +1,29 @@
+$bg : black;
+
+.banner{
+    height: 400px;
+    background-color: $bg;
+}
+.row{
+    padding: 1rem;
+    background-color: $bg;
+    >h2{
+        font-weight: 300;
+        margin:0.5rem
+    }
+    >div{
+        display: flex;
+        justify-content: space-evenly;
+        overflow-x: auto;
+       
+    }
+}
+.card{
+    width:200px;
+    margin: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.5s;
+    &:hover{
+        transform: translateY(-10px);
+    }
+}
