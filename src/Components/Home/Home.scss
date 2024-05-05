@@ -27,3 +27,24 @@ $bg : black;
         transform: translateY(-10px);
     }
 }
+
+.genreBox{
+    overflow-x:auto;
+    display: flex;
+    height:100px;
+    background-color: $bg;
+    flex: 0%;
+    >a{
+        color: black;
+        background-color: white;
+        padding: 1rem 0;
+        text-align: center;
+        border-radius: 5px;
+        transition: all 0.5s;
+        min-width: 10rem;
+        margin: 1rem;
+        &:hover{
+            background-color: rgb(206, 205, 205);
+        }
+    }
+}
