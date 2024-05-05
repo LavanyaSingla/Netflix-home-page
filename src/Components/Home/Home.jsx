@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Home.scss';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { BiPlay } from "react-icons/bi"
+import { AiOutlinePlus } from "react-icons/ai"
 
 const apiKey = "7097b47d67b4f154140d702d3e8806ce";
 const url = "https://api.themoviedb.org/3";
@@ -55,25 +57,44 @@ const Home = () => {
 
     return (
         <section className="home">
-            <div className="banner">
+            <div className="banner" style={{
+                backgroundImage: popularMovies[0] ?
+                    `url(${`${imgUrl}/${popularMovies[0].poster_path}`})` : "none"
+            }}>
+                {
+                    popularMovies[0] && (
+                        <h1>{popularMovies[0].original_title}</h1>
+                    )
+                }
+                {
+                    popularMovies[0] && (
+                        <p>{popularMovies[0].overview}</p>
+                    )
+                }
 
-                <Row title={"Upcoming"} arr={upcomingMovies} />
-                <Row title={"Recently Played"} arr={playingMovies} />
-                <Row title={"Top-Rated"} arr={topRatedMovies} />
-                <Row title={"Popular"} arr={popularMovies} />
-
-                <div className="genreBox">
-
-                    {
-                        genre.map((item) => (
-                            <Link key={item.id} to={`/genre/${item.id}`}>
-                                {item.name}
-                            </Link>
-                        ))
-                    }
-
+                <div>
+                    <button><BiPlay /> Play</button>
+                    <button>My List <AiOutlinePlus /></button>
 
                 </div>
+            </div>
+
+            <Row title={"Upcoming"} arr={upcomingMovies} />
+            <Row title={"Recently Played"} arr={playingMovies} />
+            <Row title={"Top-Rated"} arr={topRatedMovies} />
+            <Row title={"Popular"} arr={popularMovies} />
+
+            <div className="genreBox">
+
+                {
+                    genre.map((item) => (
+                        <Link key={item.id} to={`/genre/${item.id}`}>
+                            {item.name}
+                        </Link>
+                    ))
+                }
+
+
             </div>
 
         </section>
